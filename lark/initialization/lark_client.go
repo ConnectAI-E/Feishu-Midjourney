@@ -1,16 +1,11 @@
 package initialization
 
 import (
-	"time"
-
 	lark "github.com/larksuite/oapi-sdk-go/v3"
 )
 
 var (
-	larkClient           *lark.Client
-	accessToken          string
-	_config              Config
-	accessTokenResetTime time.Time
+	larkClient *lark.Client
 )
 
 func LoadLarkClient(config Config) {
