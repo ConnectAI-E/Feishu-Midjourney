@@ -36,10 +36,6 @@ func (p PersonalMessageHandler) cardHandler(
 	_ context.Context,
 	cardAction *larkcard.CardAction) (interface{}, error) {
 
-	// if data, err := json.Marshal(cardAction); err == nil {
-	// 	fmt.Println("lark card message: ", string(data))
-	// }
-
 	actionValue := cardAction.Action.Value
 	discordMsgId := actionValue["discordMsgId"].(string)
 	value := actionValue["value"].(string)

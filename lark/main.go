@@ -3,7 +3,6 @@ package main
 import (
 	"lark/handlers"
 	"lark/initialization"
-	"lark/utils"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/pflag"
@@ -18,8 +17,6 @@ func main() {
 	cfg := pflag.StringP("config", "c", "./config.yaml", "apiserver config file path.")
 
 	pflag.Parse()
-
-	utils.NewLogger()
 
 	config := initialization.LoadConfig(*cfg)
 
@@ -50,5 +47,5 @@ func main() {
 	// discord消息回调
 	r.POST("/api/discord", handlers.DiscordHandler)
 
-	r.Run(":16006")
+	r.Run(":16008")
 }

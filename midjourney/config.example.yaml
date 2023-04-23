@@ -1,0 +1,6 @@
+# discord 配置
+DISCORD_USER_TOKEN: 你的用户token
+DISCORD_BOT_TOKEN: 你的机器人token
+DISCORD_SERVER_ID: 你的discord服务器id
+DISCORD_CHANNEL_ID: 你的discord频道id
+CB_URL: 获取到discord中的图片资源传输给你的业务服务接口
