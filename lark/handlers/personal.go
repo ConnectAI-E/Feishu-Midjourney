@@ -7,7 +7,6 @@ import (
 	"lark/chore"
 	"lark/db"
 	"lark/initialization"
-	"lark/services"
 	"lark/utils"
 	"strings"
 
@@ -16,9 +15,7 @@ import (
 	larkim "github.com/larksuite/oapi-sdk-go/v3/service/im/v1"
 )
 
-type PersonalMessageHandler struct {
-	gpt services.ChatGPT
-}
+type PersonalMessageHandler struct{}
 
 var DiscordUpscaleRank = map[string]int64{
 	"U1":    1,
@@ -50,7 +47,6 @@ func (p PersonalMessageHandler) cardHandler(
 	}
 	var idl IDiscordLarkMap
 	if err := json.Unmarshal(larkDiscord, &idl); err != nil {
-		fmt.Println("cardHandler: ", "** json.Unmarshal失败 **", err)
 		return nil, nil
 	}
 
@@ -93,9 +89,6 @@ func (p PersonalMessageHandler) cardHandler(
 }
 
 func (p PersonalMessageHandler) handle(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
-
-	// larkInfo, _ := json.Marshal(event)
-	// fmt.Println("larkInfo", string(larkInfo))
 
 	content := event.Event.Message.Content
 	msgId := event.Event.Message.MessageId

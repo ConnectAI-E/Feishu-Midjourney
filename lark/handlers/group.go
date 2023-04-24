@@ -60,10 +60,6 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 	return nil
 }
 
-func (p GroupMessageHandler) handleRichText(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
-	return nil
-}
-
 var _ MessageHandlerInterface = (*GroupMessageHandler)(nil)
 
 func NewGroupMessageHandler(config initialization.Config) MessageHandlerInterface {

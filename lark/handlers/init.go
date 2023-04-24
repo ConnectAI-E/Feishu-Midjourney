@@ -56,7 +56,6 @@ func CardHandler() func(ctx context.Context,
 func judgeCardType(cardAction *larkcard.CardAction) HandlerType {
 	actionValue := cardAction.Action.Value
 	chatType := actionValue["chatType"]
-	fmt.Println("chatType: ", chatType)
 	if chatType == "group" {
 		return GroupHandler
 	}
@@ -68,7 +67,6 @@ func judgeCardType(cardAction *larkcard.CardAction) HandlerType {
 
 func judgeChatType(event *larkim.P2MessageReceiveV1) HandlerType {
 	chatType := event.Event.Message.ChatType
-	fmt.Printf("\nchatType: %v", *chatType)
 	if *chatType == "group" {
 		return GroupHandler
 	}

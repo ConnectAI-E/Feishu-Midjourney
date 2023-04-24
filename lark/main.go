@@ -15,13 +15,10 @@ import (
 
 func main() {
 	cfg := pflag.StringP("config", "c", "./config.yaml", "apiserver config file path.")
-
 	pflag.Parse()
 
 	config := initialization.LoadConfig(*cfg)
-
 	initialization.LoadLarkClient(*config)
-
 	handlers.InitHanders(*config)
 
 	eventHandler := dispatcher.NewEventDispatcher(
@@ -33,17 +30,11 @@ func main() {
 		handlers.CardHandler())
 
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
 	r.POST("/chat",
 		sdkginext.NewEventHandlerFunc(eventHandler))
 	r.POST("/api/card",
 		sdkginext.NewCardActionHandlerFunc(
 			cardHandler))
-
 	// discord消息回调
 	r.POST("/api/discord", handlers.DiscordHandler)
 
