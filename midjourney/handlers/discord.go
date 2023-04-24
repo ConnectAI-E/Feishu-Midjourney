@@ -79,9 +79,9 @@ func DiscordMsgUpdate(s *discord.Session, m *discord.MessageUpdate) {
 	}
 
 	/******** *********/
-	if data, err := json.Marshal(m); err == nil {
-		fmt.Println("discord message update: ", string(data))
-	}
+	// if data, err := json.Marshal(m); err == nil {
+	// 	fmt.Println("discord message update: ", string(data))
+	// }
 	/******** *********/
 
 	/******** 发送的指令midjourney生成发现错误 ********/
@@ -115,6 +115,9 @@ func trigger(content string, t Scene) {
 
 func request(params interface{}) {
 	data, err := json.Marshal(params)
+
+	fmt.Println("请求回调接口", string(data))
+
 	if err != nil {
 		fmt.Println("json marshal error: ", err)
 		return
