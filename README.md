@@ -1,5 +1,15 @@
-# Feishu-Midjourney-Proxy
-🍎 一套让飞书调用 midjourney 的客户端中转实现方案
+
+<p align='center'>
+    <img src='https://user-images.githubusercontent.com/50035229/233974068-e4e9d85e-5eff-4f97-bd26-081fce0d1b19.png' alt='' width='800'/>
+</p>
+
+<p align='center'>
+   Feishu × Midjourney
+<br>
+<br>
+   🍎 一套让飞书调用 midjourney 的实现方案
+</p>
+
 
 🚀 需要完成的功能列表:
 
