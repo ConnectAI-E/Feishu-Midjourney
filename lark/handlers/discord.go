@@ -170,7 +170,6 @@ func SendDiscordMessageBotUpscale(index int64, discordMessageId string, msgHash 
 }
 
 func SendDiscordMessageBotV(index int64, discordMessageId string, msgHash string, larkMsgId string) error {
-	// err := ds.Variate(index, discordMessageId, msgHash)
 	err := services.ReqMidjourney(services.RequestTrigger{
 		Type:         "variation",
 		DiscordMsgId: discordMessageId,
@@ -186,7 +185,6 @@ func SendDiscordMessageBotV(index int64, discordMessageId string, msgHash string
 }
 
 func SendDiscordMessageMaxUpscale(discordMessageId string, msgHash string, larkMsgId string) error {
-	// err := ds.MaxUpscale(discordMessageId, msgHash)
 	err := services.ReqMidjourney(services.RequestTrigger{
 		Type:         "maxUpscale",
 		DiscordMsgId: discordMessageId,
@@ -201,7 +199,6 @@ func SendDiscordMessageMaxUpscale(discordMessageId string, msgHash string, larkM
 }
 
 func SendDiscordMessageBotReset(discordMessageId string, msgHash string, larkMsgId string) error {
-	// err := ds.Reset(discordMessageId, msgHash)
 	err := services.ReqMidjourney(services.RequestTrigger{
 		Type:         "reset",
 		DiscordMsgId: discordMessageId,
@@ -326,7 +323,7 @@ type IDiscordQueue struct {
 func discordQueueCheck(larkChatId string) error {
 	for {
 		isLock := db.GetCache().Get(DiscordLockKey)
-		if isLock != "" {
+		if isLock == "" {
 			break
 		}
 		time.Sleep(1 * time.Second)
