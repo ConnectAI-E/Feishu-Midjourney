@@ -110,7 +110,6 @@ func WithMainText(msg string) larkcard.MessageCardElement {
 }
 
 func ReplyMsg(ctx context.Context, msg string, msgId *string) error {
-	fmt.Println("sendMsg gptN: ", msg, msgId)
 	msg, i := processMessage(msg)
 	if i != nil {
 		return i
@@ -185,15 +184,6 @@ func SendNewTopicCard(ctx context.Context,
 		WithHeader("👻️ 已开启新的话题（点击⬆️文字进入话题）", larkcard.TemplateBlue),
 		WithMainText(content),
 		WithNote("提醒：在对话框参与回复，可保持话题连贯"))
-	ReplyCard(
-		ctx,
-		msgId,
-		newCard,
-	)
-}
-
-func SendMidjourneyTipCard(ctx context.Context, msgId *string) {
-	newCard := midjourneyTips()
 	ReplyCard(
 		ctx,
 		msgId,

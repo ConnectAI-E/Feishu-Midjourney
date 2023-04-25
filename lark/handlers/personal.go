@@ -107,7 +107,6 @@ func (p PersonalMessageHandler) handle(ctx context.Context, event *larkim.P2Mess
 		sessionId = msgId
 	}
 	if db.GetCache().Get(*msgId) != "" {
-		fmt.Println("msgId", *msgId, "processed")
 		return nil
 	}
 	db.GetCache().Set(*msgId, "1")
@@ -120,16 +119,11 @@ func (p PersonalMessageHandler) handle(ctx context.Context, event *larkim.P2Mess
 
 	if instruct, foundInstruct := utils.EitherCutPrefix(qParsed,
 		"/imagine"); foundInstruct {
-		fmt.Println("instruct: ", instruct, "\norigin data: ", qParsed)
 		SendDiscordMessageBot(*msgId, instruct, ctx, *chatId)
 		return nil
 	}
 
-	if _, foundPicture := utils.EitherTrimEqual(qParsed,
-		"/midjourney"); foundPicture {
-		chore.SendMidjourneyTipCard(context.Background(), msgId)
-		return nil
-	}
+	chore.ReplyMsg(ctx, "🤖️：您想进行什么操作？", msgId)
 	return nil
 }
 
