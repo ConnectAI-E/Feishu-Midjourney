@@ -20,3 +20,10 @@
 - [✅] 基于midjourney Bot机器人的限制。限制同时生图的人数，增加排队机制。
 - [✅] 限制同一个用户最多能够同时运行一个任务
 - [ ] 更新图片中间生成状态
+
+
+### 获取测试 Midjourney 账号
+
+<a href='http://buy.aijqr.top/' >
+<img src='https://user-images.githubusercontent.com/50035229/235298699-267f1162-8611-45f3-97f6-2477bb9a3068.png' alt='' width='330'/>
+</a>
