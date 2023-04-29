@@ -3,27 +3,21 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	discord "github.com/bwmarrin/discordgo"
+	"github.com/k0kubun/pp/v3"
 	"midjourney/initialization"
 	"net/http"
 	"strings"
-
-	discord "github.com/bwmarrin/discordgo"
 )
 
 type Scene string
 
 const (
-	/**
-	 * 首次触发生成
-	 */
+	// FirstTrigger /** 首次触发生成 */
 	FirstTrigger Scene = "FirstTrigger"
-	/**
-	 * 生成图片结束
-	 */
+	// GenerateEnd /** 生成图片结束 */
 	GenerateEnd Scene = "GenerateEnd"
-	/**
-	 * 发送的指令midjourney生成过程中发现错误
-	 */
+	// GenerateEditError /** 发送的指令midjourney生成过程中发现错误 */
 	GenerateEditError Scene = "GenerateEditError"
 	/**
 	 * 发送的指令midjourney直接报错或排队阻塞不在该项目中处理 在业务服务中处理
@@ -43,9 +37,8 @@ func DiscordMsgCreate(s *discord.Session, m *discord.MessageCreate) {
 	}
 
 	/******** *********/
-	if data, err := json.Marshal(m); err == nil {
-		fmt.Println("discord message: ", string(data))
-	}
+	pp.Println(m.Content)
+	pp.Println(m.Attachments)
 	/******** *********/
 
 	/******** 提示词，首次触发 start ********/

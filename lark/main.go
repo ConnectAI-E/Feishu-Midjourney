@@ -30,9 +30,9 @@ func main() {
 		handlers.CardHandler())
 
 	r := gin.Default()
-	r.POST("/chat",
+	r.POST("/webhook/event",
 		sdkginext.NewEventHandlerFunc(eventHandler))
-	r.POST("/api/card",
+	r.POST("/webhook/card",
 		sdkginext.NewCardActionHandlerFunc(
 			cardHandler))
 	// discord消息回调
