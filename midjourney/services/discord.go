@@ -9,14 +9,17 @@ import (
 	"net/http"
 )
 
-const url = "https://discord.com/api/v9/interactions"
+const (
+	url   = "https://discord.com/api/v9/interactions"
+	appId = "936929561302675456"
+)
 
 func GenerateImage(prompt string) error {
 	requestBody := ReqTriggerDiscord{
 		Type:          2,
 		GuildID:       config.GetConfig().DISCORD_SERVER_ID,
 		ChannelID:     config.GetConfig().DISCORD_CHANNEL_ID,
-		ApplicationId: "936929561302675456",
+		ApplicationId: appId,
 		SessionId:     "cb06f61453064c0983f2adae2a88c223",
 		Data: DSCommand{
 			Version: "1077969938624553050",
@@ -51,7 +54,7 @@ func Upscale(index int64, messageId string, messageHash string) error {
 		ChannelId:     config.GetConfig().DISCORD_CHANNEL_ID,
 		MessageFlags:  0,
 		MessageId:     messageId,
-		ApplicationId: "936929561302675456",
+		ApplicationId: appId,
 		SessionId:     "45bc04dd4da37141a5f73dfbfaf5bdcf",
 		Data: UpscaleData{
 			ComponentType: 2,
@@ -69,7 +72,7 @@ func MaxUpscale(messageId string, messageHash string) error {
 		ChannelId:     config.GetConfig().DISCORD_CHANNEL_ID,
 		MessageFlags:  0,
 		MessageId:     messageId,
-		ApplicationId: "936929561302675456",
+		ApplicationId: appId,
 		SessionId:     "1f3dbdf09efdf93d81a3a6420882c92c",
 		Data: UpscaleData{
 			ComponentType: 2,
@@ -92,7 +95,7 @@ func Variate(index int64, messageId string, messageHash string) error {
 		ChannelId:     config.GetConfig().DISCORD_CHANNEL_ID,
 		MessageFlags:  0,
 		MessageId:     messageId,
-		ApplicationId: "936929561302675456",
+		ApplicationId: appId,
 		SessionId:     "45bc04dd4da37141a5f73dfbfaf5bdcf",
 		Data: UpscaleData{
 			ComponentType: 2,
@@ -110,7 +113,7 @@ func Reset(messageId string, messageHash string) error {
 		ChannelId:     config.GetConfig().DISCORD_CHANNEL_ID,
 		MessageFlags:  0,
 		MessageId:     messageId,
-		ApplicationId: "936929561302675456",
+		ApplicationId: appId,
 		SessionId:     "45bc04dd4da37141a5f73dfbfaf5bdcf",
 		Data: UpscaleData{
 			ComponentType: 2,
