@@ -3,11 +3,12 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	discord "github.com/bwmarrin/discordgo"
-	"github.com/k0kubun/pp/v3"
 	"midjourney/initialization"
 	"net/http"
 	"strings"
+
+	discord "github.com/bwmarrin/discordgo"
+	"github.com/k0kubun/pp/v3"
 )
 
 type Scene string
@@ -19,6 +20,10 @@ const (
 	GenerateEnd Scene = "GenerateEnd"
 	// GenerateEditError /** 发送的指令midjourney生成过程中发现错误 */
 	GenerateEditError Scene = "GenerateEditError"
+	/**
+	 * 富文本
+	 */
+	RichText Scene = "RichText"
 	/**
 	 * 发送的指令midjourney直接报错或排队阻塞不在该项目中处理 在业务服务中处理
 	 * 例如：首次触发生成多少秒后没有回调业务服务判定会指令错误或者排队阻塞
@@ -41,23 +46,16 @@ func DiscordMsgCreate(s *discord.Session, m *discord.MessageCreate) {
 	pp.Println(m.Attachments)
 	/******** *********/
 
-	/******** 提示词，首次触发 start ********/
-	// 重新生成不发送
-	// TODO 优化 使用 From
 	if strings.Contains(m.Content, "(Waiting to start)") && !strings.Contains(m.Content, "Rerolling **") {
 		trigger(m.Content, FirstTrigger)
 		return
 	}
-	/******** end ********/
-
-	/******** 图片生成回复 start ********/
 	for _, attachment := range m.Attachments {
 		if attachment.Width > 0 && attachment.Height > 0 {
 			replay(m)
 			return
 		}
 	}
-	/******** end ********/
 }
 
 func DiscordMsgUpdate(s *discord.Session, m *discord.MessageUpdate) {
@@ -77,23 +75,35 @@ func DiscordMsgUpdate(s *discord.Session, m *discord.MessageUpdate) {
 	// }
 	/******** *********/
 
-	/******** 发送的指令midjourney生成发现错误 ********/
 	if strings.Contains(m.Content, "(Stopped)") {
 		trigger(m.Content, GenerateEditError)
+		return
+	}
+	if len(m.Embeds) > 0 {
+		send(m.Embeds)
 		return
 	}
 }
 
 type ReqCb struct {
-	Discord *discord.MessageCreate `json:"discord,omitempty"`
-	Content string                 `json:"content,omitempty"`
-	Type    Scene                  `json:"type"`
+	Embeds  []*discord.MessageEmbed `json:"embeds,omitempty"`
+	Discord *discord.MessageCreate  `json:"discord,omitempty"`
+	Content string                  `json:"content,omitempty"`
+	Type    Scene                   `json:"type"`
 }
 
 func replay(m *discord.MessageCreate) {
 	body := ReqCb{
 		Discord: m,
 		Type:    GenerateEnd,
+	}
+	request(body)
+}
+
+func send(embeds []*discord.MessageEmbed) {
+	body := ReqCb{
+		Embeds: embeds,
+		Type:   RichText,
 	}
 	request(body)
 }

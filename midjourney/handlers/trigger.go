@@ -33,6 +33,8 @@ func MidjourneyBot(c *gin.Context) {
 		err = ImageMaxUpscale(body.DiscordMsgId, body.MsgHash)
 	case "reset":
 		err = ImageReset(body.DiscordMsgId, body.MsgHash)
+	case "describe":
+		err = ImageDescribe(body.Prompt)
 	default:
 		err = errors.New("invalid type")
 	}
