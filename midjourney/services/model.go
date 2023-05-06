@@ -10,19 +10,19 @@ type ReqTriggerDiscord struct {
 }
 
 type DSCommand struct {
-	Version            string               `json:"version"`
-	Id                 string               `json:"id"`
-	Name               string               `json:"name"`
-	Type               int64                `json:"type"`
-	Options            []DSOption           `json:"options"`
-	ApplicationCommand DSApplicationCommand `json:"application_command"`
-	Attachments        []interface{}        `json:"attachments"`
+	Version            string                  `json:"version"`
+	Id                 string                  `json:"id"`
+	Name               string                  `json:"name"`
+	Type               int64                   `json:"type"`
+	Options            []DSOption              `json:"options"`
+	ApplicationCommand DSApplicationCommand    `json:"application_command"`
+	Attachments        []ReqCommandAttachments `json:"attachments"`
 }
 
 type DSOption struct {
-	Type  int64  `json:"type"`
-	Name  string `json:"name"`
-	Value string `json:"value"`
+	Type  int64       `json:"type"`
+	Name  string      `json:"name"`
+	Value interface{} `json:"value"`
 }
 
 type DSApplicationCommand struct {
@@ -65,3 +65,29 @@ type UpscaleData struct {
 type ReqVariationDiscord = ReqUpscaleDiscord
 
 type ReqResetDiscord = ReqUpscaleDiscord
+
+type ReqAttachments struct {
+	Files []ReqFile `json:"files"`
+}
+
+type ReqFile struct {
+	Filename string `json:"filename"`
+	FileSize int64  `json:"file_size"`
+	Id       string `json:"id"`
+}
+
+type ResAttachments struct {
+	Attachments []ResFile `json:"attachments"`
+}
+
+type ResFile struct {
+	Id             int    `json:"id"`
+	UploadUrl      string `json:"upload_url"`
+	UploadFilename string `json:"upload_filename"`
+}
+
+type ReqCommandAttachments struct {
+	Id             string `json:"id"`
+	Filename       string `json:"filename"`
+	UploadFilename string `json:"uploaded_filename"`
+}

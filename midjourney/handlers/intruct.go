@@ -28,3 +28,8 @@ func ImageReset(discordMsgId string, msgHash string) error {
 	err := services.Reset(discordMsgId, msgHash)
 	return err
 }
+
+func ImageDescribe(uploadName string) error {
+	err := services.Describe(uploadName)
+	return err
+}
