@@ -11,9 +11,9 @@ import (
 )
 
 const (
-	url       = "https://discord.com/api/v9/interactions"
-	uploadUrl = "https://discord.com/api/v9/channels/1097913573247824045/attachments"
-	appId     = "936929561302675456"
+	url             = "https://discord.com/api/v9/interactions"
+	uploadUrlFormat = "https://discord.com/api/v9/channels/%s/attachments"
+	appId           = "936929561302675456"
 )
 
 func GenerateImage(prompt string) error {
@@ -171,6 +171,7 @@ func Attachments(name string, size int64) (ResAttachments, error) {
 			Id:       "1",
 		}},
 	}
+	uploadUrl := fmt.Sprintf(uploadUrlFormat, config.GetConfig().DISCORD_CHANNEL_ID)
 	body, err := request(requestBody, uploadUrl)
 	var data ResAttachments
 	json.Unmarshal(body, &data)
@@ -195,6 +196,6 @@ func request(params interface{}, url string) ([]byte, error) {
 	}
 	defer response.Body.Close()
 	bod, respErr := ioutil.ReadAll(response.Body)
-	fmt.Println("response:", string(bod), respErr, response.Status, uploadUrl)
+	fmt.Println("response:", string(bod), respErr, response.Status, url)
 	return bod, respErr
 }
