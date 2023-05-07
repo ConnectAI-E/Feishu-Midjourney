@@ -1,12 +1,13 @@
 
 <p align='center'>
-    <img src='https://user-images.githubusercontent.com/50035229/233974068-e4e9d85e-5eff-4f97-bd26-081fce0d1b19.png' alt='' width='800'/>
+    <img src='https://user-images.githubusercontent.com/50035229/236666689-5361c779-5a87-4e6a-a65e-ec52d68d3efa.png' alt='' width='800'/>
 <details align='center'>
     <summary> 📷 点击展开完整功能截图</summary>
     <br>
     <p align='center'>
     <img src='https://user-images.githubusercontent.com/50035229/236665883-03539266-ff63-475b-848d-e773bb954bd9.png' alt='图生文本' width='800'/>
     </p>
+
 
 </details>
 
@@ -33,8 +34,4 @@
 - [ ] 更新图片中间生成状态
 
 
-### 获取测试 Midjourney 账号
 
-<a href='http://buy.aijqr.top/' >
-<img src='https://user-images.githubusercontent.com/50035229/235298699-267f1162-8611-45f3-97f6-2477bb9a3068.png' alt='' width='330'/>
-</a>
