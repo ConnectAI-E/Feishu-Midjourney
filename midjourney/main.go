@@ -19,6 +19,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/v1/trigger/midjourney-bot", handlers.MidjourneyBot)
+	r.POST("/v1/trigger/upload", handlers.UploadFile)
 
 	r.Run(":16007")
 }
