@@ -18,20 +18,23 @@
    Feishu × Midjourney
 <br>
 <br>
-   🍎 一套让飞书调用 midjourney 的实现方案
+   🚀 Feishu MJ 🚀
 </p>
 
 
-🚀 需要完成的功能列表:
+## 👻 机器人功能
 
 ✨ 可以添加更多你们能想到的或你们想要的功能
-- [✅] 在飞书中能够使用`/imagine prompt`进行midjourney生图并获取到对应的图片
-- [✅] 生成的图片能够在飞书中进行Upscale、Variation、Make Variation、Reroll操作
-- [✅] 使用者在飞书中私聊机器人生成的图能够发送给对应的人
-- [✅] 基于midjourney Bot机器人的限制。限制同时生图的人数，增加排队机制。
-- [✅] 限制同一个用户最多能够同时运行一个任务
-- [✅] 支持describe功能
-- [ ] 更新图片中间生成状态
+- ⚽️ 文生图: 在飞书中能够使用`/imagine prompt`进行midjourney生图并获取到对应的图片
+- 🏹 图生文:  支持describe语法
+- 🏀 图片变体: 生成的图片能够在飞书中进行Upscale、Variation、Make Variation、Reroll操作
+- ⚾️ 私聊使用: 使用者在飞书中私聊机器人生成的图能够发送给对应的人
+- 🥎 并发限制：基于midjourney Bot机器人的限制。限制同时生图的人数，增加排队机制。
+
+## 使用教程
+
+社区贡献：https://docs.qq.com/doc/DUFdLQlBVenB5d1FI
+
 
 
 
