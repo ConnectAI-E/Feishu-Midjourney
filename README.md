@@ -1,6 +1,16 @@
 
 <p align='center'>
     <img src='https://user-images.githubusercontent.com/50035229/233974068-e4e9d85e-5eff-4f97-bd26-081fce0d1b19.png' alt='' width='800'/>
+<details align='center'>
+    <summary> 📷 点击展开完整功能截图</summary>
+    <br>
+    <p align='center'>
+    <img src='https://user-images.githubusercontent.com/50035229/236665883-03539266-ff63-475b-848d-e773bb954bd9.png' alt='图生文本' width='800'/>
+    </p>
+
+</details>
+
+
 </p>
 
 <p align='center'>
