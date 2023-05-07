@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"fmt"
 	"lark/initialization"
 
 	larkcard "github.com/larksuite/oapi-sdk-go/v3/card"
@@ -11,6 +10,7 @@ import (
 
 type MessageHandlerInterface interface {
 	handle(ctx context.Context, event *larkim.P2MessageReceiveV1) error
+	handleRichText(ctx context.Context, event *larkim.P2MessageReceiveV1) error
 	cardHandler(ctx context.Context, cardAction *larkcard.CardAction) (interface{}, error)
 }
 
@@ -33,13 +33,15 @@ func InitHanders(config initialization.Config) {
 func Handler(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
 	handlerType := judgeChatType(event)
 	if handlerType == "otherChat" {
-		fmt.Println("unknown chat type")
 		return nil
 	}
 	msgType := judgeMsgType(event)
 
+	if msgType == "RichText" {
+		return handlers[handlerType].handleRichText(ctx, event)
+	}
+
 	if msgType != "text" {
-		fmt.Println("unknown msg type")
 		return nil
 	}
 	return handlers[handlerType].handle(ctx, event)

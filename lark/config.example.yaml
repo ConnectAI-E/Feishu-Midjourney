@@ -7,3 +7,4 @@ APP_VERIFICATION_TOKEN: xxx
 BOT_NAME: xxx
 # discord 配置
 DISCORD_MIDJOURNEY_URL: http://127.0.0.1:16008/v1/trigger/midjourney-bot
+DISCORD_UPLOAD_URL: http://127.0.0.1:16008/v1/trigger/upload

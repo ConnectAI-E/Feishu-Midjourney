@@ -13,6 +13,7 @@ type Config struct {
 	LarkAppVerificationToken string
 	LarkBotName              string
 	DISCORD_MIDJOURNEY_URL   string
+	DISCORD_UPLOAD_URL       string
 }
 
 var config *Config
@@ -28,6 +29,7 @@ func LoadConfig(cfg string) *Config {
 		LarkAppVerificationToken: getViperStringValue("APP_VERIFICATION_TOKEN"),
 		LarkBotName:              getViperStringValue("BOT_NAME"),
 		DISCORD_MIDJOURNEY_URL:   getViperStringValue("DISCORD_MIDJOURNEY_URL"),
+		DISCORD_UPLOAD_URL:       getViperStringValue("DISCORD_UPLOAD_URL"),
 	}
 	return config
 }

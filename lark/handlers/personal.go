@@ -1,14 +1,22 @@
 package handlers
 
 import (
+	"bytes"
 	"context"
+	"crypto/md5"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"lark/chore"
 	"lark/db"
 	"lark/initialization"
+	"lark/services"
 	"lark/utils"
+	"net/http"
+	"strconv"
 	"strings"
+	"time"
 
 	larkcard "github.com/larksuite/oapi-sdk-go/v3/card"
 
@@ -97,7 +105,6 @@ func (p PersonalMessageHandler) handle(ctx context.Context, event *larkim.P2Mess
 	eventFlag := db.GetCache().Get(event.EventV2Base.Header.EventID)
 
 	if eventFlag == "1" {
-		fmt.Println("eventId", eventFlag, "触发相同的event")
 		return nil
 	}
 	db.GetCache().Set(event.EventV2Base.Header.EventID, "1")
@@ -124,6 +131,114 @@ func (p PersonalMessageHandler) handle(ctx context.Context, event *larkim.P2Mess
 	}
 
 	chore.ReplyMsg(ctx, "🤖️：您想进行什么操作？", msgId)
+	return nil
+}
+
+type RichText struct {
+	Title   string              `json:"title"`
+	Content [][]RichTextContent `json:"content"`
+}
+
+type RichTextContent struct {
+	Tag      string `json:"tag"`
+	ImageKey string `json:"image_key"`
+	Width    int    `json:"width"`
+	Height   int    `json:"height"`
+}
+
+type ReqUploadFile struct {
+	ImgData []byte `json:"imgData"`
+	Name    string `json:"name"`
+	Size    int64  `json:"size"`
+}
+
+func (p PersonalMessageHandler) handleRichText(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
+	content := event.Event.Message.Content
+	msgId := event.Event.Message.MessageId
+	rootId := event.Event.Message.RootId
+	chatId := event.Event.Message.ChatId
+	eventFlag := db.GetCache().Get(event.EventV2Base.Header.EventID)
+
+	if eventFlag == "1" {
+		return nil
+	}
+	db.GetCache().Set(event.EventV2Base.Header.EventID, "1")
+
+	sessionId := rootId
+	if sessionId == nil || *sessionId == "" {
+		sessionId = msgId
+	}
+	if db.GetCache().Get(*msgId) != "" {
+		return nil
+	}
+	db.GetCache().Set(*msgId, "1")
+	var data RichText
+	err := json.Unmarshal([]byte(*content), &data)
+	if err != nil {
+		chore.ReplyMsg(ctx, "🤖️：内容解析错误，请检查后重试\n错误信息", msgId)
+		return nil
+	}
+	if len(data.Content) == 0 || len(data.Content[0]) == 0 {
+		chore.ReplyMsg(ctx, "🤖️：请上传图片", msgId)
+		return nil
+	}
+	if data.Content[0][0].Tag == "img" {
+		if data.Content[0][0].ImageKey == "" {
+			chore.ReplyMsg(ctx, "🤖️：请上传图片", msgId)
+			return nil
+		}
+		imageType, size, payload, err := initialization.GetLarkMsgFile(*event.Event.Message.MessageId, data.Content[0][0].ImageKey)
+		if err != nil {
+			chore.ReplyMsg(ctx, fmt.Sprintf("🤖️：获取上传的图片失败，请重试\n错误信息: %v", err), msgId)
+			return nil
+		}
+		str := *msgId + strconv.FormatInt(time.Now().UnixNano(), 10)
+		hash := md5.Sum([]byte(str))
+		id := hex.EncodeToString(hash[:])[:12]
+		db.GetCache().SetInterface(id, IDiscordLarkMap{
+			MsgId:                        *msgId,
+			Count:                        0,
+			LarkMsgIdMapPrevDiscordMsgId: map[string]string{},
+			LarkChatId:                   *chatId,
+		})
+		requestBody, err := json.Marshal(ReqUploadFile{
+			Size:    size,
+			Name:    id + "." + imageType,
+			ImgData: payload,
+		})
+		req, err := http.NewRequest("POST", initialization.GetConfig().DISCORD_UPLOAD_URL, bytes.NewBuffer(requestBody))
+		if err != nil {
+			chore.ReplyMsg(ctx, "🤖️：创建上传图片请求失败，请稍后再试", msgId)
+			return nil
+		}
+		req.Header.Set("Content-Type", "image/jpeg")
+
+		// 发送请求
+		client := &http.Client{}
+		resp, err := client.Do(req)
+		if err != nil {
+			chore.ReplyMsg(ctx, "🤖️：发送上传图片请求失败，请稍后再试", msgId)
+			return nil
+		}
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			chore.ReplyMsg(ctx, "🤖️：上传图片失败，请重试", msgId)
+			return nil
+		}
+		var files map[string]interface{}
+		json.Unmarshal(body, &files)
+		err = services.ReqMidjourney(services.RequestTrigger{
+			Type:   "describe",
+			Prompt: files["name"].(string),
+		})
+		if err != nil {
+			chore.ReplyMsg(ctx, "🤖️：触发describe失败，请重试", msgId)
+			return nil
+		}
+		return nil
+	}
+	chore.ReplyMsg(ctx, "🤖️：内容错误，请检查后重试", msgId)
 	return nil
 }
 

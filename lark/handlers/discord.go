@@ -10,6 +10,8 @@ import (
 	"lark/chore"
 	"lark/services"
 	"net/http"
+	"path"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -37,9 +39,10 @@ const (
 )
 
 type ReqCb struct {
-	Discord *discord.MessageCreate `json:"discord,omitempty"`
-	Content string                 `json:"content,omitempty"`
-	Type    Scene                  `json:"type"`
+	Embeds  []*discord.MessageEmbed `json:"embeds,omitempty"`
+	Discord *discord.MessageCreate  `json:"discord,omitempty"`
+	Content string                  `json:"content,omitempty"`
+	Type    Scene                   `json:"type"`
 }
 
 type Scene string
@@ -48,6 +51,7 @@ const (
 	FirstTrigger      Scene = "FirstTrigger"
 	GenerateEnd       Scene = "GenerateEnd"
 	GenerateEditError Scene = "GenerateEditError"
+	Rich              Scene = "RichText"
 )
 
 func DiscordHandler(c *gin.Context) {
@@ -92,6 +96,22 @@ func DiscordHandler(c *gin.Context) {
 			}
 		}
 		return
+	}
+
+	if params.Type == Rich {
+		embeds := params.Embeds
+		if len(embeds) > 0 {
+			embed := embeds[0]
+			if embed != nil && embed.Image != nil {
+				if embed.Image.URL != "" {
+					filename := path.Base(embed.Image.URL)
+					id := strings.TrimSuffix(filename, filepath.Ext(filename))
+					if data, err := getDiscordLarkMapJson(id); err == nil {
+						chore.ReplyMsg(context.Background(), embed.Description, &data.MsgId)
+					}
+				}
+			}
+		}
 	}
 }
 

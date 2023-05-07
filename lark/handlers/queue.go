@@ -3,7 +3,6 @@ package handlers
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"lark/db"
 	"time"
 )
@@ -30,7 +29,6 @@ func discordQueueCheck(larkChatId string) error {
 	if queue != nil {
 		var queueList []IDiscordQueue
 		if err := json.Unmarshal(queue, &queueList); err != nil {
-			fmt.Println("discord queue check: ", "** json.Unmarshal失败 **", err)
 			return nil
 		}
 		queueList = discordQueueAutoOutDie(queueList)
@@ -55,7 +53,6 @@ func discordQueueSet(larkChatId string) {
 	if queue != nil {
 		var queueList []IDiscordQueue
 		if err := json.Unmarshal(queue, &queueList); err != nil {
-			fmt.Println("discord queue set: ", "** json.Unmarshal失败 **", err)
 			return
 		}
 		queueList = discordQueueAutoOutDie(queueList)
@@ -78,7 +75,6 @@ func discordQueueDel(larkChatId string) {
 	if queue != nil {
 		var queueList []IDiscordQueue
 		if err := json.Unmarshal(queue, &queueList); err != nil {
-			fmt.Println("discord queue del: ", "** json.Unmarshal失败 **", err)
 			return
 		}
 		queueList = discordQueueAutoOutDie(queueList)

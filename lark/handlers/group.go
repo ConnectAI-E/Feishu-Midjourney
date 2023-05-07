@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"context"
-	"fmt"
 	"lark/chore"
 	"lark/db"
 	"lark/initialization"
@@ -36,7 +35,6 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 	eventFlag := db.GetCache().Get(event.EventV2Base.Header.EventID)
 
 	if eventFlag == "1" {
-		fmt.Println("eventId", eventFlag, "触发相同的event")
 		return nil
 	}
 	db.GetCache().Set(event.EventV2Base.Header.EventID, "1")
@@ -46,7 +44,6 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 	}
 
 	if db.GetCache().Get(*msgId) != "" {
-		fmt.Println("msgId", *msgId, "processed")
 		return nil
 	}
 	db.GetCache().Set(*msgId, "1")
@@ -57,6 +54,10 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 		chore.ReplyMsg(ctx, "群聊暂不支持，请私聊进行", msgId)
 		return nil
 	}
+	return nil
+}
+
+func (p GroupMessageHandler) handleRichText(ctx context.Context, event *larkim.P2MessageReceiveV1) error {
 	return nil
 }
 
