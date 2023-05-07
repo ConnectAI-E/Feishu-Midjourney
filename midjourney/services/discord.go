@@ -195,6 +195,6 @@ func request(params interface{}, url string) ([]byte, error) {
 	}
 	defer response.Body.Close()
 	bod, respErr := ioutil.ReadAll(response.Body)
-	fmt.Println("upscale response: ", string(bod), respErr, response.Status)
+	fmt.Println("response:", string(bod), respErr, response.Status, uploadUrl)
 	return bod, respErr
 }
