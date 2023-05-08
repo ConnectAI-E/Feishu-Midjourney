@@ -1,0 +1,26 @@
+version: "3"
+services:
+  lark:
+    build: ./lark
+    ports:
+      - "16008:16008"
+    environment:
+      - GIN_MODE=release
+      - APP_ID=your_lark_app_id
+      - APP_SECRET=your_lark_app_secret
+      - APP_ENCRYPT_KEY=your_lark_encrypt_key
+      - APP_VERIFICATION_TOKEN=your_lark_verification_token
+      - BOT_NAME=your_bot_name
+      - DISCORD_MIDJOURNEY_URL=http://midjourney:16007/v1/trigger/midjourney-proxy-bot
+      - DISCORD_UPLOAD_URL=http://midjourney:16007/v1/trigger/upload
+    restart: unless-stopped
+  midjourney:
+    build: ./midjourney
+    environment:
+      - GIN_MODE=release
+      - DISCORD_USER_TOKEN=your_discord_user_token
+      - DISCORD_BOT_TOKEN=your_discord_bot_token
+      - DISCORD_SERVER_ID=your_discord_server_id
+      - DISCORD_CHANNEL_ID=your_discord_channel_id
+      - CB_URL=http://lark:16008/api/discord
+    restart: unless-stopped
