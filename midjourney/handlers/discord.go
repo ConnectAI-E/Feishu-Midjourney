@@ -64,16 +64,14 @@ func DiscordMsgUpdate(s *discord.Session, m *discord.MessageUpdate) {
 		return
 	}
 
+	if m.Author == nil {
+		return
+	}
+
 	// 过滤掉自己发送的消息
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-
-	/******** *********/
-	// if data, err := json.Marshal(m); err == nil {
-	// 	fmt.Println("discord message update: ", string(data))
-	// }
-	/******** *********/
 
 	if strings.Contains(m.Content, "(Stopped)") {
 		trigger(m.Content, GenerateEditError)
@@ -119,7 +117,7 @@ func trigger(content string, t Scene) {
 func request(params interface{}) {
 	data, err := json.Marshal(params)
 
-	fmt.Println("请求回调接口", string(data))
+	// fmt.Println("请求回调接口", string(data))
 
 	if err != nil {
 		fmt.Println("json marshal error: ", err)
