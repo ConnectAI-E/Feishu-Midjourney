@@ -33,7 +33,13 @@
 
 ## 使用教程
 
-社区贡献：https://docs.qq.com/doc/DUFdLQlBVenB5d1FI
+https://fork-way.feishu.cn/docx/JbZOdUXK4o1GMgxTdX0cqQWOnwg
+
+
+## 交流讨论
+
+
+ <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/fa996851-232b-436d-a3e4-a1a8a32d3860' alt='' width='200'/>
 
 
 
