@@ -1,16 +1,19 @@
-
 <p align='center'>
-    <img src='https://user-images.githubusercontent.com/50035229/236666689-5361c779-5a87-4e6a-a65e-ec52d68d3efa.png' alt='' width='800'/>
+    <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/dca2d099-349f-4403-9bd2-cff5770ac37e' alt='图生文本' width='800'/>
+</p>
+
+
+
 <details align='center'>
-    <summary> 📷 点击展开完整功能截图</summary>
+    <summary> 📷 点击展开企联AI完整功能</summary>
     <br>
     <p align='center'>
+    <img src='https://github.com/ConnectAI-E/Feishu-OpenAI/assets/50035229/8a589e42-c092-4878-83c3-dc12a801c2d6' alt='语音对话' width='800'/>
+    <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/dca2d099-349f-4403-9bd2-cff5770ac37e' alt='图生文本' width='800'/>
+    <img src='https://user-images.githubusercontent.com/50035229/236666689-5361c779-5a87-4e6a-a65e-ec52d68d3efa.png' alt='图生文本' width='800'/>
     <img src='https://user-images.githubusercontent.com/50035229/236665883-03539266-ff63-475b-848d-e773bb954bd9.png' alt='图生文本' width='800'/>
     </p>
-
-
 </details>
-
 
 </p>
 
@@ -22,18 +25,23 @@
 </p>
 
 <p align='center'>
-  😀Connect-AI-E开源马拉松正式开始评审环节啦😀
-</p>
-
-<p align='center'>
-  快来pick你最喜欢的开源项目吧!
+  😀企联AI共创计划正式开启😀
 </p>
   
 <p align='center'>
-   https://wenjuan.feishu.cn/m/cfm?t=s6hfGkEr4pMi-8ph5
+   https://fork-way.feishu.cn/docx/Gvztd1iVXoXOsVxF2ujcnPPenDf
 </p>
 
+## 商业支持
 
+如果开源版无法满足您公司的需求，推荐您尝试的商业共创版
+
+- 专人技术支持: 配备专业部署交付人员与后期一对一维护服务
+- 同时提供在线Saas版/企业级私有部署
+
+查看更多内容: https://connect-ai.forkway.cn
+
+企业客户咨询: 13995928702(River)
 
 ## 👻 机器人功能
 
