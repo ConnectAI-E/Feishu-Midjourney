@@ -63,5 +63,7 @@ https://fork-way.feishu.cn/docx/JbZOdUXK4o1GMgxTdX0cqQWOnwg
  <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/fa996851-232b-436d-a3e4-a1a8a32d3860' alt='' width='200'/>
 
 
+## 赞助感谢
 
+友情感谢 'Find My Ai' 提供的部分经费赞助！
 
