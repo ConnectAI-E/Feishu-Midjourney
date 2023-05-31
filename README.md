@@ -39,9 +39,11 @@
 - 专人技术支持: 配备专业部署交付人员与后期一对一维护服务
 - 同时提供在线Saas版/企业级私有部署
 
-查看更多内容: https://connect-ai.forkway.cn
+查看更多内容: https://www.qiniai.com/
 
-企业客户咨询: 13995928702(River)
+企业咨询：15623677720
+
+<img width="400" src="https://www.qiniai.com/assets/contact-15c00beb.png">
 
 ## 👻 机器人功能
 
