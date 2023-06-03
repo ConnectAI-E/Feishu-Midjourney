@@ -38,5 +38,5 @@ func main() {
 	// discord消息回调
 	r.POST("/api/discord", handlers.DiscordHandler)
 
-	r.Run(":16008")
+	r.Run(":" + config.LarkPort)
 }

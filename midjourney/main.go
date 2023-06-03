@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"midjourney/handlers"
 	"midjourney/initialization"
 
@@ -21,5 +22,5 @@ func main() {
 	r.POST("/v1/trigger/midjourney-bot", handlers.MidjourneyBot)
 	r.POST("/v1/trigger/upload", handlers.UploadFile)
 
-	r.Run(":16007")
+	r.Run(fmt.Sprintf(":%s", initialization.GetConfig().MJ_PORT))
 }

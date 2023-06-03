@@ -3,8 +3,9 @@ APP_ID: xxx
 APP_SECRET: xx
 APP_ENCRYPT_KEY: xx
 APP_VERIFICATION_TOKEN: xxx
-# 请确保和飞书应用管理平台中的设置一致 
+# 请确保和飞书应用管理平台中的设置一致
 BOT_NAME: xxx
 # discord 配置
 DISCORD_MIDJOURNEY_URL: http://127.0.0.1:16008/v1/trigger/midjourney-bot
 DISCORD_UPLOAD_URL: http://127.0.0.1:16008/v1/trigger/upload
+LARK_PORT: 16008
