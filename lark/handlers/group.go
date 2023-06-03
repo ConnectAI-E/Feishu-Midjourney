@@ -30,7 +30,7 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 	content := event.Event.Message.Content
 	msgId := event.Event.Message.MessageId
 	rootId := event.Event.Message.RootId
-	// chatId := event.Event.Message.ChatId
+	chatId := event.Event.Message.ChatId
 	sessionId := rootId
 	eventFlag := db.GetCache().Get(event.EventV2Base.Header.EventID)
 
@@ -49,11 +49,14 @@ func (p GroupMessageHandler) handle(ctx context.Context, event *larkim.P2Message
 	db.GetCache().Set(*msgId, "1")
 	qParsed := strings.Trim(parseContent(*content), " ")
 
-	if _, foundInstruct := utils.EitherCutPrefix(qParsed,
+	if instruct, foundInstruct := utils.EitherCutPrefix(qParsed,
 		"/imagine"); foundInstruct {
-		chore.ReplyMsg(ctx, "群聊暂不支持，请私聊进行", msgId)
+		//chore.ReplyMsg(ctx, "群聊暂不支持，请私聊进行", msgId)
+		SendDiscordMessageBot(*msgId, instruct, ctx, *chatId)
 		return nil
 	}
+	chore.ReplyMsg(ctx, "🤖️：您想进行什么操作？", msgId)
+
 	return nil
 }
 
