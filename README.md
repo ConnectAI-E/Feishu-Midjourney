@@ -32,18 +32,6 @@
    www.qiniai.com
 </p>
 
-## 商业支持
-
-如果开源版无法满足您公司的需求，推荐您尝试的商业共创版
-
-- 专人技术支持: 配备专业部署交付人员与后期一对一维护服务
-- 同时提供在线Saas版/企业级私有部署
-
-查看更多内容: https://www.qiniai.com/
-
-企业咨询：15623677720
-
-<img width="400" src="https://www.qiniai.com/assets/contact-15c00beb.png">
 
 ## 👻 机器人功能
 
@@ -58,6 +46,20 @@
 ## 使用教程
 
 https://fork-way.feishu.cn/docx/JbZOdUXK4o1GMgxTdX0cqQWOnwg
+
+## 商业支持
+
+如果开源版无法满足您公司的需求，推荐您尝试的商业共创版
+
+- 专人技术支持: 配备专业部署交付人员与后期一对一维护服务
+- 同时提供在线Saas版/企业级私有部署
+
+查看更多内容: https://www.qiniai.com/
+
+企业咨询：15623677720
+
+<img width="400" src="https://www.qiniai.com/assets/contact-15c00beb.png">
+
 
 
 ## 交流讨论
