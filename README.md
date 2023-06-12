@@ -8,8 +8,6 @@
     <summary> 📷 点击展开企联AI完整功能</summary>
     <br>
     <p align='center'>
-    <img src='https://github.com/ConnectAI-E/Feishu-OpenAI/assets/110169811/12d9015d-58c1-40ac-9779-e77da5ad6eff' width='800'/>
-    <img src='https://github.com/ConnectAI-E/Feishu-OpenAI/assets/110169811/d18d3fea-331e-41a9-bf05-c7da7c26d5ad' width='800'/>
     <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/dca2d099-349f-4403-9bd2-cff5770ac37e' alt='图生文本' width='800'/>
     <img src='https://user-images.githubusercontent.com/50035229/236666689-5361c779-5a87-4e6a-a65e-ec52d68d3efa.png' alt='图生文本' width='800'/>
     <img src='https://user-images.githubusercontent.com/50035229/236665883-03539266-ff63-475b-848d-e773bb954bd9.png' alt='图生文本' width='800'/>
