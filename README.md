@@ -1,5 +1,7 @@
 <p align='center'>
+    <a href='https://www.qiniai.com' target="_blank" rel="noopener noreferrer">
     <img src='https://github.com/ConnectAI-E/Feishu-Midjourney/assets/50035229/dca2d099-349f-4403-9bd2-cff5770ac37e' alt='图生文本' width='800'/>
+    </a>
 </p>
 
 
