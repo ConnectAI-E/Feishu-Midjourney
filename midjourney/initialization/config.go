@@ -27,7 +27,7 @@ func LoadConfig(cfg string) *Config {
 		DISCORD_SERVER_ID:  getViperStringValue("DISCORD_SERVER_ID"),
 		DISCORD_CHANNEL_ID: getViperStringValue("DISCORD_CHANNEL_ID"),
 		CB_URL:             getViperStringValue("CB_URL"),
-		MJ_PORT:            getDefaultValue("MJ_PORT", "16008"),
+		MJ_PORT:            getDefaultValue("MJ_PORT", "16007"),
 	}
 	return config
 }
