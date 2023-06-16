@@ -1,5 +1,5 @@
 <p align='center'>
-    <a href='https://www.qiniai.com' target="_blank" rel="noopener noreferrer">
+    <a href='https://www.connectai-e.com' target="_blank" rel="noopener noreferrer">
     <img src='https://github-production-user-asset-6210df.s3.amazonaws.com/50035229/239670492-dca2d099-349f-4403-9bd2-cff5770ac37e.png' alt='图生文本' width='800'/>
     </a>
 </p>
@@ -30,7 +30,7 @@
 </p>
   
 <p align='center'>
-   www.qiniai.com
+   www.connectai-e.com
 </p>
 
 
