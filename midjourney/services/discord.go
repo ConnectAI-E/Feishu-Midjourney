@@ -24,7 +24,7 @@ func GenerateImage(prompt string) error {
 		ApplicationId: appId,
 		SessionId:     "cb06f61453064c0983f2adae2a88c223",
 		Data: DSCommand{
-			Version: "1077969938624553050",
+			Version: "1118961510123847772",
 			Id:      "938956540159881230",
 			Name:    "imagine",
 			Type:    1,
@@ -32,7 +32,7 @@ func GenerateImage(prompt string) error {
 			ApplicationCommand: DSApplicationCommand{
 				Id:                       "938956540159881230",
 				ApplicationId:            "936929561302675456",
-				Version:                  "1077969938624553050",
+				Version:                  "1118961510123847772",
 				DefaultPermission:        true,
 				DefaultMemberPermissions: nil,
 				Type:                     1,
@@ -134,7 +134,7 @@ func Describe(uploadName string) error {
 		ApplicationId: "936929561302675456",
 		SessionId:     "0033db636f7ce1a951e54cdac7044de3",
 		Data: DSCommand{
-			Version: "1092492867185950853",
+			Version: "1118961510123847774",
 			Id:      "1092492867185950852",
 			Name:    "describe",
 			Type:    1,
@@ -142,7 +142,7 @@ func Describe(uploadName string) error {
 			ApplicationCommand: DSApplicationCommand{
 				Id:                       "1092492867185950852",
 				ApplicationId:            "936929561302675456",
-				Version:                  "1092492867185950853",
+				Version:                  "1118961510123847774",
 				DefaultPermission:        true,
 				DefaultMemberPermissions: nil,
 				Type:                     1,
