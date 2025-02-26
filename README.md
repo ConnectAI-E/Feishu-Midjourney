@@ -1,3 +1,5 @@
+<img width="1280" alt="飞书 AI 对话" src="https://github.com/user-attachments/assets/f5b27246-6d56-43a3-a4e1-9db8c69f698d" />
+
 <p align='center'>
     <a href='https://www.connectai-e.com' target="_blank" rel="noopener noreferrer">
     <img src='https://github-production-user-asset-6210df.s3.amazonaws.com/50035229/239670492-dca2d099-349f-4403-9bd2-cff5770ac37e.png' alt='图生文本' width='800'/>
